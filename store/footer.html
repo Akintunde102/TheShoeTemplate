@@ -1,0 +1,246 @@
+ <div class="footer-bottom-area">
+                <div class="col-md-8">
+                    <div class="copyright">
+                        <p>&copy; 2015 SHOES. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://akin.com.ng" target="_blank">AKIN</a></p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="footer-card-icon">
+                        <i class="fa fa-cc-discover"></i>
+                        <i class="fa fa-cc-mastercard"></i>
+                        <i class="fa fa-cc-paypal"></i>
+                        <i class="fa fa-cc-visa"></i>
+                    </div>
+               
+        </div>
+    </div> <!-- End footer bottom area -->
+	</div>
+	</div>   
+  
+
+ 
+ <?php
+ $dirPath = "img/products";
+if ( !( $handle = opendir( $dirPath ) ) ) die( "Cannot open the directory." );
+while ( $file = readdir( $handle ) ) {
+if ( $file != "." && $file != ".." ){ $hloc_array = explode('.',$file); $p = $hloc_array[0];
+ 			
+?>
+<script type="text/javascript" >
+// magic.js
+$(document).ready(function() {
+	// process the form
+	$('form.add<?php echo $p;?>').submit(function(event) {
+
+		$('#form-group').removeClass('has-error'); // remove the error class
+		
+		var formData = {
+			'fname' 				: $('input#fname<?php echo $p;?>').val(),
+			'email' 			: $('input#email<?php echo $p;?>').val(),
+			'product' 			: $('input#product<?php echo $p;?>').val(),
+			'comment' 			: $('textarea#comment<?php echo $p;?>').val(),
+		};
+
+		// process the form
+		$.ajax({
+			type 		: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+			url 		: "<?php echo 'http://'.$site_name.'/add.php';?>", // the url where we want to POST
+			data 		: formData, // our data object
+			dataType 	: 'json', // what type of data do we expect back from the server
+			encode 		: true
+		})
+			// using the done promise callback
+			.done(function(data) {
+
+				// log data to the console so we can see
+				console.log(data);
+
+				// here we will handle errors and validation messages
+				if ( ! data.success) {
+					// handle errors for quote ---------------
+					if (data.errors.fname) {
+					    $('p.alert-success').remove(); // remove the error text
+					    $('p.fresult').remove(); // remove the error text
+						$('#fresult<?php echo $p;?>').append('<p class="fresult"><i class="fa fa-asterisk">' + data.errors.fname + '</i></p>'); // add the actual error message under our input
+					}
+					
+				} else {
+					// ALL GOOD! just show the success message!
+					$('p.fresult').remove(); // remove the error text
+					$('#fresult<?php echo $p;?>').append('<p id="fadeout<?php echo $p;?>" class="alert alert-success"><i class="fa fa-asterisk">' + data.message + '</i></p>');
+						$("#fadeout<?php echo $p;?>").delay(5000).fadeOut();				
+				}
+			})
+
+			// using the fail promise callback
+			.fail(function(data) {
+
+				// show any errors
+				// best to remove for production
+				console.log(data);
+				
+					$('#result').append('<div class="alert alert-success">No Shit</div>');
+				
+			});
+
+		// stop the form from submitting the normal way and refreshing the page
+		event.preventDefault();
+	});
+
+});
+</script>
+
+<?php
+			echo '
+	 <div class="modal fade" id="m'.$p.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+	  <div class="modal-dialog">';
+
+	  echo '
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel1"> <i class="fa fa-plus"></i>PRODUCT</h4>
+	      </div>
+	      <div class="modal-body">
+		        <div class="mian-popup-body" >
+                 <a href="#order'.$p.'" class="btn btn-default col-md-12">Order</a>
+                <img src="img/products/'.$file.'" style="width: 500px;height: 500px;margin: 10px 30px 10px 10px;border: #fff 4px solid;"  />
+		        
+				<div class="row">
+				<div class="col-md-12">
+			<form action="http://'.$site_name.'/add.php" method="POST" class="form-horizontal form-label-left add'.$p.'">	
+										<legend><h2 style="color: #fff;">Order Below</h2></legend>	
+				<div id="fresult'.$p.'"> </div>
+									   <div class="form-group"><a name="order'.$p.'"></a>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fname">Name<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <input type="text" name="fname"  id="fname'.$p.'" class="form-control col-md-7 col-xs-12" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Phone Number/Email<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <input type="text"  name="email" id="email'.$p.'" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+                                     <div class="item form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Comment<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-8 col-sm-8 col-xs-12">
+                                                <textarea  id="comment'.$p.'" name="comment" class="form-control col-md-7 col-xs-12"></textarea>
+                                            </div>
+                                        </div>
+										     <input type="hidden" id="product'.$p.'" name="product" value="'.$file.'">
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
+                                                <button type="submit" class="btn btn-deafult col-md-12">Order</button>
+                                            </div>
+                                        </div>
+                                    </form>
+				</div>
+				</div>
+				</div>
+				
+	      </div>
+	      <div class="modal-footer">
+		  
+	        <button type="button" class="btn btn-primary back-btn" data-dismiss="modal">CLOSE ME</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	  ';
+	  }
+}closedir( $handle );
+?>
+ 
+		
+		
+   <div class="modal fade" id="mAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel1"> <i class="fa fa-plus"></i> ABOUT SHOES</h4>
+	      </div>
+	      <div class="modal-body">
+		        <div class="mian-popup-body" >
+                   <h1> <span class="fa fa-flask "></span> WHO WE ARE ?</h1>
+		        	<div class="row">
+		        	<p>
+					JEGEDE AKINTUNDE is the CEO/ creative producer, SHOES Manufacturing And Services Limited makers of corporate and casual male and female shoes.<br> <br>
+                        SHOES is an indigenous shoe company based in Nigeria with a broad customer base. We work with professionals with special skills in shoe designing since 2009. SHOES has international affiliations in Europe with the likes of Dago Engler leather company, Sniques shoes, Collonil, makers of shoe care products, Fagus, Spenlle and more, who are key players in the European shoes industry
+		        	</p>
+                    <h3> <span class="fa fa-cog fa-spin "></span> Our Vision</h3>
+		        	<p>
+		        		Our vision is that this indigenous shoe company becomes a household name all over Nigeria and beyond
+		        	</p>
+		        	 <h3> <span class="fa fa-glass"></span> Clientele</h3>
+		        	<p>
+		        		The quality of our products gives us the opportunity of working with professionals
+                        
+		        	</p>
+		        </div>
+		        </div>
+	      </div>
+	      <div class="modal-footer">
+		  
+	        <button type="button" class="btn btn-primary back-btn" data-dismiss="modal">CLOSE ME</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	   <!--/. SERVICES MODAL POPUP DIV-->
+    <div class="modal fade" id="mContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel"> <i class="fa fa-plus"></i> CONTACT US</h4>
+	      </div>
+	      <div class="modal-body">
+              <div class="mian-popup-body">
+                   <h1> <span class="fa fa-book "></span> REACH US</h1>
+		        	<div class="row">
+		        	<p><h2>Contact us: 08160393069.</h2>  </p><p>  <h2>       Email: jegedeakintunde@gmail.com
+                       </h2>
+		        	</p>
+                    <h3> <span class="fa fa-cog fa-spin "></span> Our Location</h3>
+		        	<p>
+		        		123 UA, Newyork Street, 2078. <br />
+                        Call: +42-78-0090-00.
+                         
+		        	</p>
+              <br/><br/>
+		        	<!-- <div >
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2999841.293321206!2d-75.80920404999999!3d42.75594204999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew+York!5e0!3m2!1sen!2s!4v1395313088825" class="mymap" ></iframe>
+					</div> -->
+		        </div>
+		        </div>
+		        
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary back-btn" data-dismiss="modal">CLOSE ME</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+   <!--/. SERVICES MODAL POPUP DIV-->
+  
+    <!-- Bootstrap JS form CDN -->
+    <script src="js/bootstrap.js"></script>
+    
+    <!-- jQuery sticky menu -->
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    
+    <!-- jQuery easing -->
+    <script src="js/jquery.easing.1.3.min.js"></script>
+    
+	
+    <!-- Main Script -->
+    <script src="js/main.js"></script>

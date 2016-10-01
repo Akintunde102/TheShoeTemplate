@@ -1,0 +1,17 @@
+
+<div class="products-bottom">
+		<?php 
+		$dirPath = "img/products";
+if ( !( $handle = opendir( $dirPath ) ) ) die( "Cannot open the directory." );
+while ( $file = readdir( $handle ) ) {
+if ( $file != "." && $file != ".." ){ $hloc_array = explode('.',$file); $p = $hloc_array[0]; 
+echo "<div class=\"col-md-4 products-grid\"><a class=\"example-image-link\" href=\"order.html?p=$p\" ><img class=\"example-image\" src=\"img/products/$file\" /></a>
+						<div class=\"products-info\">
+							<a href=\"order.html?p=$p\">Order Now </a>
+						</div></div>";
+				}
+}closedir( $handle );
+
+echo '<div class="clearfix"></div>';?>
+ </div>
+ <!-- End slider area -->

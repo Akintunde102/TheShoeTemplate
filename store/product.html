@@ -1,0 +1,20 @@
+	<div class="container" >
+		<ul class="caption-style-1">
+		<?php 
+		$dirPath = "img/products";
+if ( !( $handle = opendir( $dirPath ) ) ) die( "Cannot open the directory." );
+while ( $file = readdir( $handle ) ) {
+if ( $file != "." && $file != ".." ){ $hloc_array = explode('.',$file); $p = $hloc_array[0]; echo "<a data-toggle=\"modal\"  data-target=\"#m$p\" href=\"#mHome\" ><li><img src=\"img/products/$file\" class=\"btn btn-default btn-lg\"style=\"width: 200px;height: 200px;margin: 10px 30px 10px 10px;border: #fff 3px solid;\" /><div class=\"caption\">
+					<div class=\"blur\"></div>
+					<div class=\"caption-text\">
+						<a data-toggle=\"modal\"  class=\"btn add-to-cart-link\" data-target=\"#m$p\" href=\"#mHome\" style=\"background: #D63A00;padding-top: 14px;color: #fff;font: 20px;\"><h1>Order/Enlarge</h1></a>
+						<p></p>
+					</div>
+				</div></li></a>";
+				}
+}closedir( $handle );
+
+echo '</ul>';?>
+ </div>
+ <!-- End slider area -->
+ 
