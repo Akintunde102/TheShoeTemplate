@@ -171,7 +171,7 @@ class Mobile_Detect
         // @ref: http://us.toshiba.com/tablets/tablet-finder
         // @ref: http://www.toshiba.co.jp/regza/tablet/
         'ToshibaTablet'     => 'Android.*(AT100|AT105|AT200|AT205|AT270|AT275|AT300|AT305|AT1S5|AT500|AT570|AT700|AT830)|TOSHIBA.*FOLIO',
-        // @ref: http://www.nttdocomo.co.jp/english/service/developer/smart_phone/technical_info/spec/index.html
+        // @ref: http://www.nttdocomo.co.jp/english/service/developer/smart_phone/technical_info/spec/index.php
         'LGTablet'          => '\bL-06C|LG-V900|LG-V909\b',
         'FujitsuTablet'     => 'Android.*\b(F-01D|F-05E|F-10D|M532|Q572)\b',
         // Prestigio Tablets http://www.prestigio.com/support
@@ -248,7 +248,7 @@ class Mobile_Detect
         // @ref: http://www.yonesnav.com/products/products.php
         'YONESTablet' => 'BQ1078|BC1003|BC1077|RK9702|BC9730|BC9001|IT9001|BC7008|BC7010|BC708|BC728|BC7012|BC7030|BC7027|BC7026',
         // @ref: http://www.cjshowroom.com/eproducts.aspx?classcode=004001001
-        // China manufacturer makes tablets for different small brands (eg. http://www.zeepad.net/index.html)
+        // China manufacturer makes tablets for different small brands (eg. http://www.zeepad.net/index.php)
         'ChangJiaTablet'    => 'TPC7102|TPC7103|TPC7105|TPC7106|TPC7107|TPC7201|TPC7203|TPC7205|TPC7210|TPC7708|TPC7709|TPC7712|TPC7110|TPC8101|TPC8103|TPC8105|TPC8106|TPC8203|TPC8205|TPC8503|TPC9106|TPC9701|TPC97101|TPC97103|TPC97105|TPC97106|TPC97111|TPC97113|TPC97203|TPC97603|TPC97809|TPC97205|TPC10101|TPC10103|TPC10106|TPC10111|TPC10203|TPC10205|TPC10503',
         // @ref: http://www.gloryunion.cn/products.asp
         // @ref: http://www.allwinnertech.com/en/apply/mobile.html
@@ -324,7 +324,7 @@ class Mobile_Detect
         'DiigoBrowser'    => 'DiigoBrowser',
         // http://www.puffinbrowser.com/index.php
         'Puffin'            => 'Puffin',
-        // @ref: http://mercury-browser.com/index.html
+        // @ref: http://mercury-browser.com/index.php
         'Mercury'          => '\bMercury\b',
         // @reference: http://en.wikipedia.org/wiki/Minimo
         // http://en.wikipedia.org/wiki/Vision_Mobile_Browser

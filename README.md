@@ -6,7 +6,7 @@ with the following content
 
 
 <IfModule dir_module>
-    DirectoryIndex index.html
+    DirectoryIndex index.php
 </IfModule>
 
 <IfModule mime_module>

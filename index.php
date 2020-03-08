@@ -1,9 +1,8 @@
 <?php  include('store/inc.php'); ?>   
 <?php  if ($deviceType !=  'computer'){include('index_mobile.html'); exit;}?>
 <?php  include('store/header.html'); ?>   
-<?php include('store/slider.html'); ?> 
-    <div class="promo-area">
-                
+<?php  include('store/slider.html'); ?> 
+    <div class="promo-area">    
 				<div class="col-md-4 col-sm-8">
                     <div class="single-promo">
                         <i class="fa fa-refresh"></i>
@@ -32,7 +31,7 @@ border-bottom: #fff 4px solid;">
                     <div class="latest-product">
                         <h2 class="section-title" >Latest Products</h2>
                         <div class="product-carousel">
-						<?php 
+						<?php
 $dirPath = "img/products";
 if ( !( $handle = opendir( $dirPath ) ) ) die( "Cannot open the directory." );
 while ( $file = readdir( $handle ) ) {
@@ -50,8 +49,6 @@ if ( $file != "." && $file != ".." ){ $hloc_array = explode('.',$file); $p = $hl
 ?>
                            </div>
                     </div>
-
-           
     </div> <!-- End main content area -->
     </div> <!-- End brands area -->   
       
